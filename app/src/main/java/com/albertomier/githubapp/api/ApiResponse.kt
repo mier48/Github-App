@@ -1,8 +1,33 @@
 package com.albertomier.githubapp.api
 
+import retrofit2.Response
 import java.util.regex.Pattern
 
 sealed class ApiResponse<T> {
+    companion object {
+        fun <T> create(error: Throwable): ApiErrorResponse<T> {
+            return ApiErrorResponse(error.message ?: "Error desconocido")
+        }
+
+        fun <T> create(response: Response<T>): ApiResponse<T> {
+            return if (response.isSuccessful) {
+                val body = response.body()
+                if (body == null || response.code() == 204) {
+                    ApiEmptyResponse()
+                } else {
+                    ApiSuccessResponse(body = body, linksHeaders = response.headers()?.get("link"))
+                }
+            } else {
+                val msg = response.errorBody()?.string()
+                val errorMsg = if (msg.isNullOrEmpty()) {
+                    response.message()
+                } else {
+                    msg
+                }
+                ApiErrorResponse(errorMsg ?: "Error desconocido")
+            }
+        }
+    }
 }
 
 class ApiEmptyResponse<T> : ApiResponse<T>()
