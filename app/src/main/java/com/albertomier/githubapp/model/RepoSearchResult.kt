@@ -8,7 +8,7 @@ import com.albertomier.githubapp.database.GithubTypeConverters
 @TypeConverters(GithubTypeConverters::class)
 class RepoSearchResult(
     val query: String,
-    val reposIds: List<Int>,
+    val repoIds: List<Int>,
     val totalCount: Int,
     val next: Int?
 )

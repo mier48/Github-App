@@ -30,10 +30,10 @@ abstract class RepoDao {
     abstract fun load(ownerLogin: String, name: String): LiveData<Repo>
 
     @Query("SELECT login, avatarUrl, repoName, repoOwner, contributions FROM contributor WHERE repoName = :name AND repoOwner = : owner ORDER BY contributions DESC")
-    abstract fun loadContributors(name: String, owner: String): LiveData<Contributor>
+    abstract fun loadContributors(name: String, owner: String): LiveData<List<Contributor>>
 
     @Query("SELECT * FROM repo WHERE owner_login = :owner ORDER BY stars")
-    abstract fun loadRepositories(owner: String): LiveData<Repo>
+    abstract fun loadRepositories(owner: String): LiveData<List<Repo>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(result: RepoSearchResult)
