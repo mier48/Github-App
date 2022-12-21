@@ -2,7 +2,7 @@ package com.albertomier.githubapp.utils
 
 import androidx.lifecycle.LiveData
 
-class AbsentLiveData<T : Any> private constructor() : LiveData<T>() {
+class AbsentLiveData<T : Any?> private constructor() : LiveData<T>() {
     init {
         postValue(null)
     }

@@ -19,7 +19,7 @@ data class Contributor(
     @field:SerializedName("contribution")
     val contribution: Int,
     @field:SerializedName("avatar_url")
-    val avatarUrl: String,
+    val avatarUrl: String
 ) {
     lateinit var repoName: String
     lateinit var repoOwner: String

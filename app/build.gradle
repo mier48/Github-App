@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace 'com.albertomier.githubapp'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.albertomier.githubapp"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -48,22 +48,30 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     implementation 'com.squareup.okhttp3:logging-interceptor:3.14.0'
 
+//    // Room
+//    implementation "androidx.room:room-runtime:2.4.3"
+//    annotationProcessor "androidx.room:room-compiler:2.4.3"
+//    kapt 'android.arch.persistence.room:compiler:2.2.3'
+
     // Room
-    implementation "androidx.room:room-runtime:2.4.3"
-    annotationProcessor "androidx.room:room-compiler:2.4.3"
-    kapt 'android.arch.persistence.room:compiler:2.2.3'
+    implementation "androidx.room:room-ktx:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
+
+//    // Dagger
+//    implementation 'com.google.dagger:dagger:2.44.2'
+//    implementation 'com.google.dagger:dagger-android:2.35.1'
+//    implementation 'com.google.dagger:dagger-android-support:2.22.1'
+//
+//    kapt 'com.google.dagger:dagger-compiler:2.44.2'
+//    kapt 'com.google.dagger:dagger-android-processor:2.22.1'
 
     // Dagger
     implementation 'com.google.dagger:dagger:2.44.2'
-    implementation 'com.google.dagger:dagger-android:2.35.1'
-    implementation 'com.google.dagger:dagger-android-support:2.22.1'
-
-    kapt 'com.google.dagger:dagger-compiler:2.44.2'
-    kapt 'com.google.dagger:dagger-android-processor:2.22.1'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.44.2'
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
