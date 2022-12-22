@@ -20,7 +20,7 @@ class UserViewModel @Inject constructor(
     private val _login = MutableLiveData<String>()
     val login: LiveData<String> get() = _login
 
-    private val repositories: LiveData<Resource<List<Repo>>> =
+    val repositories: LiveData<Resource<List<Repo>>> =
         Transformations.switchMap(_login) { login ->
             if (login == null) {
                 AbsentLiveData.create()
@@ -37,7 +37,7 @@ class UserViewModel @Inject constructor(
         }
     }
 
-    fun sendLogin(login: String) {
+    fun setLogin(login: String) {
         if (_login.value != login) {
             _login.value = login
         }

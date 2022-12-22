@@ -29,7 +29,7 @@ abstract class RepoDao {
     @Query("SELECT * FROM repo WHERE owner_login = :ownerLogin AND name = :name")
     abstract fun load(ownerLogin: String, name: String): LiveData<Repo>
 
-    @Query("SELECT login, avatarUrl, repoName, repoOwner, contribution FROM contributor WHERE repoName = :name AND repoOwner = :owner ORDER BY contribution DESC")
+    @Query("SELECT login, avatarUrl, repoName, repoOwner, contributions FROM contributor WHERE repoName = :name AND repoOwner = :owner ORDER BY contributions DESC")
     abstract fun loadContributors(name: String, owner: String): LiveData<List<Contributor>>
 
     @Query("SELECT * FROM repo WHERE owner_login = :owner ORDER BY stars")

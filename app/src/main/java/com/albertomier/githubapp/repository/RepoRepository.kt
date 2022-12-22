@@ -118,12 +118,9 @@ class RepoRepository @Inject constructor(
                     next = item.nextPage
                 )
 
-                db.beginTransaction()
-                try {
+                db.runInTransaction {
                     repoDao.insertRepos(item.items)
                     repoDao.insert(repoSearchResult)
-                } finally {
-                    db.endTransaction()
                 }
             }
 

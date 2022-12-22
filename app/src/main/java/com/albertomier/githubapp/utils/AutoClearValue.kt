@@ -27,6 +27,6 @@ class AutoClearedValue<T : Any>(val fragment: Fragment) : ReadWriteProperty<Frag
     override fun setValue(thisRef: Fragment, property: KProperty<*>, value: T) {
         _value = value
     }
-
-    fun <T: Any> Fragment.autoCleared() = AutoClearedValue<T>(this)
 }
+
+fun <T: Any> Fragment.autoCleared() = AutoClearedValue<T>(this)
