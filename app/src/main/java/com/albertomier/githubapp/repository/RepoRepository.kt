@@ -33,7 +33,7 @@ class RepoRepository @Inject constructor(
                 repoDao.insertRepos(item)
             }
 
-            override fun shouldFetch(data: List<Repo>): Boolean {
+            override fun shouldFetch(data: List<Repo>?): Boolean {
                 return data == null || data.isEmpty() || repoListRateLimiter.shouldFetch(owner)
             }
 
@@ -53,7 +53,7 @@ class RepoRepository @Inject constructor(
                 repoDao.insert(item)
             }
 
-            override fun shouldFetch(data: Repo): Boolean = data == null
+            override fun shouldFetch(data: Repo?): Boolean = data == null
 
             override fun loadFromDb(): LiveData<Repo> =
                 repoDao.load(ownerLogin = owner, name = name)
@@ -87,7 +87,7 @@ class RepoRepository @Inject constructor(
                 }
             }
 
-            override fun shouldFetch(data: List<Contributor>): Boolean {
+            override fun shouldFetch(data: List<Contributor>?): Boolean {
                 return data == null || data.isEmpty()
             }
 
@@ -124,7 +124,7 @@ class RepoRepository @Inject constructor(
                 }
             }
 
-            override fun shouldFetch(data: List<Repo>): Boolean = data == null
+            override fun shouldFetch(data: List<Repo>?): Boolean = data == null
 
             override fun loadFromDb(): LiveData<List<Repo>> {
                 return Transformations.switchMap(repoDao.search(query)) { searchData ->

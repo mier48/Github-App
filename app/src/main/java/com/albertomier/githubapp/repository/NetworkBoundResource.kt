@@ -90,7 +90,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     protected abstract fun saveCallResult(item: RequestType)
 
     @MainThread
-    protected abstract fun shouldFetch(data: ResultType): Boolean
+    protected abstract fun shouldFetch(data: ResultType?): Boolean
 
     @MainThread
     protected abstract fun loadFromDb(): LiveData<ResultType>

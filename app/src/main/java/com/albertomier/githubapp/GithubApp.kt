@@ -5,18 +5,18 @@ import android.app.Application
 import com.albertomier.githubapp.di.AppInjector
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
-class GithubApp : Application(), HasActivityInjector {
+class GithubApp : Application(), HasAndroidInjector  {
 
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
         AppInjector.init(this)
     }
 
-    override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
+    override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
 }
