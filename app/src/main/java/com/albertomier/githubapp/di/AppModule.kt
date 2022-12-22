@@ -32,7 +32,8 @@ class AppModule {
     @Singleton
     @Provides
     fun provideDatabase(app: Application): GithubDB {
-        return Room.databaseBuilder(app, GithubDB::class.java, DATABASE_NAME).fallbackToDestructiveMigration().build()
+        return Room.databaseBuilder(app, GithubDB::class.java, DATABASE_NAME)
+            .fallbackToDestructiveMigration().build()
     }
 
     @Singleton

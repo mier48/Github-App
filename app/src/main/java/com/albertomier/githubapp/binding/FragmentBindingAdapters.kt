@@ -1,8 +1,8 @@
 package com.albertomier.githubapp.binding
 
 import android.widget.ImageView
-import androidx.fragment.app.Fragment
 import androidx.databinding.BindingAdapter
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import javax.inject.Inject
 

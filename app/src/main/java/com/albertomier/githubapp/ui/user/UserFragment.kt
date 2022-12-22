@@ -3,7 +3,6 @@ package com.albertomier.githubapp.ui.user
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -83,8 +82,17 @@ class UserFragment : Fragment(), Injectable {
             binding.userResource = userResource
         })
 
-        val rvAdapter = RepoListAdapter(dataBindingComponent = dataBindingComponent, appExecutors=appExecutors, showFullName = false) {repo->
-            findNavController().navigate(UserFragmentDirections.actionUserFragmentToRepoFragment(repo.name, repo.owner.login))
+        val rvAdapter = RepoListAdapter(
+            dataBindingComponent = dataBindingComponent,
+            appExecutors = appExecutors,
+            showFullName = false
+        ) { repo ->
+            findNavController().navigate(
+                UserFragmentDirections.actionUserFragmentToRepoFragment(
+                    repo.name,
+                    repo.owner.login
+                )
+            )
         }
 
         binding.repoList.adapter = rvAdapter
@@ -94,7 +102,7 @@ class UserFragment : Fragment(), Injectable {
     }
 
     private fun initRepoList() {
-        userViewModel.repositories.observe(this, Observer { repos->
+        userViewModel.repositories.observe(this, Observer { repos ->
             adapter.submitList(repos.data)
         })
     }

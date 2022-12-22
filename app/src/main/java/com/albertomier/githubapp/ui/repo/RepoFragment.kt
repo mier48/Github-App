@@ -1,7 +1,6 @@
 package com.albertomier.githubapp.ui.repo
 
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -77,7 +76,7 @@ class RepoFragment : Fragment(), Injectable {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val params = RepoFragmentArgs.fromBundle(requireArguments())
-        binding.setLifecycleOwner(viewLifecycleOwner)
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.repo = repoViewModel.repo
 
         val adapter = ContributorAdapter(dataBindingComponent, appExecutors) { contributor ->

@@ -16,7 +16,7 @@ object GithubTypeConverters {
                     Log.e("TAG", e.message.toString());
                     null
                 }
-            }?.filterNotNull()
+            }.filterNotNull()
         }
     }
 

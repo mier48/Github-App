@@ -1,6 +1,6 @@
 package com.albertomier.githubapp.core
 
-object  AppConstants{
+object AppConstants {
     const val BASE_URL = "https://api.github.com/"
     const val DATABASE_NAME = "github.db"
 }

@@ -10,7 +10,7 @@ import androidx.room.Query
 import com.albertomier.githubapp.model.Contributor
 import com.albertomier.githubapp.model.Repo
 import com.albertomier.githubapp.model.RepoSearchResult
-import java.util.Collections
+import java.util.*
 
 @Dao
 abstract class RepoDao {
@@ -48,7 +48,7 @@ abstract class RepoDao {
         }
 
         return Transformations.map(loadById(reposIds)) { repositories ->
-            Collections.sort(repositories) {r1, r2 ->
+            Collections.sort(repositories) { r1, r2 ->
                 val pos1 = order.get(r1.id)
                 val pos2 = order.get(r2.id)
                 pos1 - pos2

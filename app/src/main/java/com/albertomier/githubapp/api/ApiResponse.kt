@@ -15,7 +15,7 @@ sealed class ApiResponse<T> {
                 if (body == null || response.code() == 204) {
                     ApiEmptyResponse()
                 } else {
-                    ApiSuccessResponse(body = body, linksHeaders = response.headers()?.get("link"))
+                    ApiSuccessResponse(body = body, linksHeaders = response.headers().get("link"))
                 }
             } else {
                 val msg = response.errorBody()?.string()

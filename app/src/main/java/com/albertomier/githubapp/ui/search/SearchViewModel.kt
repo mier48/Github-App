@@ -14,7 +14,7 @@ class SearchViewModel @Inject constructor(repoRepository: RepoRepository) : View
 
     private val query = MutableLiveData<String>()
     private val nextPageHandler = NextPageHandler(repoRepository)
-    val queryLD : LiveData<String> = query
+    val queryLD: LiveData<String> = query
 
     val result: LiveData<Resource<List<Repo>>> = Transformations.switchMap(query) { search ->
         if (search.isNullOrBlank()) {
@@ -26,7 +26,7 @@ class SearchViewModel @Inject constructor(repoRepository: RepoRepository) : View
     val loadMoreStatus: LiveData<LoadMoreState> get() = nextPageHandler.loadMoreState
 
     fun setQuery(orignialInput: String) {
-        val input = orignialInput.toLowerCase(Locale.getDefault()).trim()
+        val input = orignialInput.lowercase(Locale.getDefault()).trim()
 
         if (input == query.value) {
             return
